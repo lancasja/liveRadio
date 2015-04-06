@@ -1,0 +1,10 @@
+<ion-view view-title="Archive" ng-init="init()">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="episode in episodes" href="#/app/archive/{{episode._id}}">
+        <h3>{{episode.title}}</h3>
+        <span>{{episode._id}}</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

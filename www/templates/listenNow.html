@@ -1,0 +1,12 @@
+<ion-view view-title="Listen Now" ng-init="init()">
+  <ion-content>
+  	<p>{{meta}}</p>
+  </ion-content>
+
+  <ion-footer-bar class="bar-balanced">
+  		
+  		<div class="title" ng-click="pause()" ng-show="isPlaying">Pause</div>
+  		<div class="title" ng-click="play()" ng-hide="isPlaying">Play</div>
+
+  </ion-footer-bar>
+</ion-view>
