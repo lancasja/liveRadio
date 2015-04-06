@@ -3,10 +3,14 @@
   	<p>{{meta}}</p>
   </ion-content>
 
-  <ion-footer-bar class="bar-balanced">
+  <ion-footer-bar>
   		
-  		<div class="title" ng-click="pause()" ng-show="isPlaying">Pause</div>
-  		<div class="title" ng-click="play()" ng-hide="isPlaying">Play</div>
+  		<div class="title" ng-click="pause()" ng-show="isPlaying">
+  			<i class="icon ion-ios-pause-outline"></i>
+  		</div>
+  		<div class="title" ng-click="play()" ng-hide="isPlaying">
+  			<i class="icon ion-ios-play-outline"></i>
+  		</div>
 
   </ion-footer-bar>
 </ion-view>
