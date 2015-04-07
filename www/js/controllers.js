@@ -125,6 +125,8 @@ angular.module('starter.controllers', [])
   // List of episodes coming from EpisodesService defined in js/app.js
   EpisodesService.getEpisodes(function(data) {
     $scope.episodes = data;
+
+    console.log(data);
   });
   
 })
