@@ -60,6 +60,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         var jsonFeed = x2js.xml_str2json(xmlString);
         var episodes = jsonFeed.rss.channel.item;
 
+        for (var i = 0; i < episodes.length; i++) {
+          var item = episodes[i];
+          var title = item.title;
+          var itemId = title.substring(title.indexOf('#') + 1, title.indexOf('#') + 4);
+          
+          item._id = itemId;
+        }
+
         // Handle data in the controller as a callback function
         callback(episodes);
       });
