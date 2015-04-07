@@ -89,18 +89,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       }
 
       else {
-        console.log('$rootScope.audio DOES exist! No need to create one.');
+        console.log('$rootScope.audio DOES exist!');
+
+        if ($rootScope.audio.src === src) {
+          console.log('Current source and sleected source are the same.');
+        }
       }
     },
 
     play: function() {
       if ($rootScope.audio.paused) {
-        console.log('Audio is NOT playing.');
+        console.log('Audio is NOT playing. Starting playback.');
         $rootScope.audio.play();
       }
 
       else if (!$rootScope.audio.paused) {
-        console.log('Audio IS playing.')
+        console.log('Audio IS playing. Doing nothing.')
+      }
+    },
+
+    pause: function() {
+      if (!$rootScope.audio.paused) {
+        console.log('This is pause(). Audio IS playing.')
       }
     }
   }

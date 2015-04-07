@@ -154,6 +154,10 @@ angular.module('starter.controllers', [])
   $scope.play = function() {
     AudioService.createAudio($scope.currentEpisode.enclosure._url);
     AudioService.play();
+  };
+
+  $scope.pause = function() {
+    AudioService.pause();
   }
 })
 
