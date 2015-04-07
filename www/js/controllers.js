@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
 /* ==================================== */
 .controller('ListenCtrl', function($scope, $http) {
 
-    var playlistFile = 'http://yp.shoutcast.com/sbin/tunein-station.pls?id=172366';
+    var playlistFile = 'http://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://live.420radio.org:8000/listen.pls?sid=1&t=.pls';
 
     $scope.init = function() {
       $scope.isPlaying = false;
