@@ -1,9 +1,9 @@
 angular.module('starter.controllers', [])
 
-/* ===================== */
-/* == MAIN CONTROLLER == */
-/* ===================== */
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+/* ========================== */
+/* == SIDE MENU CONTROLLER == */
+/* ========================== */
+.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout) {
 
   /* Login code is here by default */
 
@@ -129,10 +129,10 @@ angular.module('starter.controllers', [])
   
 })
 
-/* ====================================== */
-/* == ARCHIVE - SINGLE ITEM CONTROLLER == */
-/* ====================================== */
-.controller('EpisodeCtrl', function($scope, $stateParams, EpisodesService) {
+/* ================================================ */
+/* == EPISODE (ARCHIVE - SINGLE ITEM) CONTROLLER == */
+/* ================================================ */
+.controller('EpisodeCtrl', function($scope, $stateParams, EpisodesService, AudioService) {
 
   $scope.episodeId = $stateParams.episodeId;
 
@@ -152,19 +152,13 @@ angular.module('starter.controllers', [])
   */
 
   $scope.play = function() {
-    $scope.audio = new Audio($scope.currentEpisode.enclosure._url);
-
-    if ($scope.audio.paused) {
-      $scope.audio.play();
-    }
+    AudioService.createAudio($scope.currentEpisode.enclosure._url);
+    AudioService.play();
   }
+})
 
-  // This is actually stopping playback, it starts over when you hit play again
-  $scope.pause = function() {
-    if (!$scope.audio.paused) {
-      $scope.audio.pause();
-    }
-  }
+.controller('PrimaryCtrl', function($rootScope) {
+  console.log('Hello from PrimaryCtrl!');
 });
 
 

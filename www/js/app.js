@@ -36,7 +36,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 /* ============== */
 /* == SERVICES == */
 /* ============== */
-// Service to share RSS feed as JSON data across the app
+// Share RSS feed as JSON data across the app
 .factory('EpisodesService', function($http) {
 
   return {
@@ -78,6 +78,34 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   }
 })
 
+.factory('AudioService', function($rootScope) {
+  return {
+    
+    createAudio: function(src) {
+      
+      if (!$rootScope.audio) {
+        console.log('$rootScope.audio does NOT exist. Creating one.');
+        $rootScope.audio = new Audio(src);
+      }
+
+      else {
+        console.log('$rootScope.audio DOES exist! No need to create one.');
+      }
+    },
+
+    play: function() {
+      if ($rootScope.audio.paused) {
+        console.log('Audio is NOT playing.');
+        $rootScope.audio.play();
+      }
+
+      else if (!$rootScope.audio.paused) {
+        console.log('Audio IS playing.')
+      }
+    }
+  }
+})
+
 /* ============ */
 /* == ROUTES == */
 /* ============ */
@@ -98,7 +126,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: "/primary",
     views: {
       'menuContent': {
-        templateUrl: "templates/primary.html"
+        templateUrl: "templates/primary.html",
+        controller: "PrimaryCtrl"
       }
     }
   })
