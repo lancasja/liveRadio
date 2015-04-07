@@ -147,8 +147,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: "/primary",
     views: {
       'menuContent': {
-        templateUrl: "templates/primary.html",
-        controller: "PrimaryCtrl"
+        templateUrl: "templates/primary.html"
       }
     }
   })

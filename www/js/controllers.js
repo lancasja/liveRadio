@@ -153,10 +153,6 @@ angular.module('starter.controllers', [])
   $scope.pause = function() {
     AudioService.pause();
   }
-})
-
-.controller('PrimaryCtrl', function($rootScope) {
-  console.log('Hello from PrimaryCtrl!');
 });
 
 
