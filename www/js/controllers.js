@@ -100,45 +100,12 @@ angular.module('starter.controllers', [])
 /* ======================== */
 /* == ARCHIVE CONTROLLER == */
 /* ======================== */
-.controller('ArchiveCtrl', function($scope, $http) {
+.controller('ArchiveCtrl', function($scope, EpisodesService) {
+
+  EpisodesService.getEpisodes(function(data) {
+    $scope.episodes = data;
+  });
   
-  $scope.init = function() {
-    $http.get('http://ajax.googleapis.com/ajax/services/feed/load', {
-      params: {
-        'v': '1.0',
-        'q': 'http://420radio.org/shows/rbs/feed/',
-        'num': '10',
-        'output': 'json_xml'
-      }
-    })
-    .success(function(data) {
-
-      // Get XML data as string
-      var xmlString = data.responseData.xmlString;
-
-      // Convert to JSON with X2JS [https://code.google.com/p/x2js/]
-      var x2js = new X2JS();
-      var jsonFeed = x2js.xml_str2json(xmlString);
-
-      var items = jsonFeed.rss.channel.item;
-
-      for (var i = 0; i < items.length; i++) {
-        var item = items[i];
-
-        var title = item.title;
-        var a = title.indexOf('#') + 1;
-        var itemId = title.substring(a, a + 3);
-        
-        item._id = itemId;
-      }
-
-      // Array of episodes
-      $scope.episodes = jsonFeed.rss.channel.item;
-    })
-    .error(function(data) {
-      console.log(data);
-    });
-  }
 })
 
 /* ====================================== */

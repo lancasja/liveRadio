@@ -28,6 +28,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   });
 })
 
+.factory('EpisodesService', function($http) {
+
+  return {
+    getEpisodes: function(callback) {
+      // Ping Google Feed API
+      $http.get('http://ajax.googleapis.com/ajax/services/feed/load', {
+        params: {
+          'v': '1.0',
+          'q': 'http://420radio.org/shows/rbs/feed/',
+          'num': '10',
+          'output': 'json_xml'
+        }
+      }).success(function(data) {
+        var xmlString = data.responseData.xmlString;
+
+        var x2js = new X2JS();
+        var jsonFeed = x2js.xml_str2json(xmlString);
+        var episodes = jsonFeed.rss.channel.item;
+
+        callback(episodes);
+      });
+    }
+  }
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
