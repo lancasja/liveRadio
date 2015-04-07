@@ -42,15 +42,12 @@ angular.module('starter.controllers', [])
 /* ==================================== */
 /* == LISTEN NOW (STREAM) CONTROLLER == */
 /* ==================================== */
-.controller('ListenCtrl', function($scope, $http) {
+.controller('ListenCtrl', function($scope, $http, AudioService) {
 
     // PLS file from Internet Radio
     var playlistFile = 'http://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://live.420radio.org:8000/listen.pls?sid=1&t=.pls';
 
     $scope.init = function() {
-
-      // HTML5 Audio Element [https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement] 
-      $scope.audio = new Audio();
 
       // Displays while getting meta data
       $scope.meta = 'Getting title of currently playing...';
@@ -77,7 +74,7 @@ angular.module('starter.controllers', [])
           // Parse the PLS file to get the <IP>:<PORT> for the streaming server
           var dataArray = data.split('\n');
           var url = dataArray[2].split('=')[1];
-          $scope.audio.src = url + '/;type=mp3';
+          $scope.audioSource = url + '/;type=mp3';
 
           /*
             - Should be able to append '/status?sid=1' but it return "invalid response"
@@ -103,17 +100,12 @@ angular.module('starter.controllers', [])
       to toggle weather the Play or Pause button is displayed
     */
     $scope.play = function() {
-      if ($scope.audio.paused) {
-        $scope.audio.play();
-        $scope.isPlaying = !$scope.isPlaying;
-      }
+      AudioService.createAudio($scope.audioSource);
+      AudioService.play();
     }
 
     $scope.pause = function() {
-      if (!$scope.audio.paused) {
-        $scope.audio.pause();
-        $scope.isPlaying = !$scope.isPlaying;
-      }
+      AudioService.pause();
     }
 })
 
