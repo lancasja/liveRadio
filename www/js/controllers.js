@@ -132,10 +132,39 @@ angular.module('starter.controllers', [])
 /* ====================================== */
 /* == ARCHIVE - SINGLE ITEM CONTROLLER == */
 /* ====================================== */
-.controller('EpisodeCtrl', function($scope, $stateParams) {
+.controller('EpisodeCtrl', function($scope, $stateParams, EpisodesService) {
 
   $scope.episodeId = $stateParams.episodeId;
 
+  EpisodesService.getEpisodes(function(data) {
+    for (var i = 0; i < data.length; i++) {
+      if (data[i]._id === $stateParams.episodeId) {
+        $scope.currentEpisode = data[i];
+      }
+    }
+  });
+
+  /*
+    Like in the "Listen Now" controller/view, play and pause is being handled
+    as two seperate buttons/functions because an if/else that checks for
+    playback state is not working. Not sure if this is an issue with mobile webkit,
+    or if the logic is flawed.
+  */
+
+  $scope.play = function() {
+    $scope.audio = new Audio($scope.currentEpisode.enclosure._url);
+
+    if ($scope.audio.paused) {
+      $scope.audio.play();
+    }
+  }
+
+  // This is actually stopping playback, it starts over when you hit play again
+  $scope.pause = function() {
+    if (!$scope.audio.paused) {
+      $scope.audio.pause();
+    }
+  }
 });
 
 

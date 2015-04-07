@@ -60,6 +60,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         var jsonFeed = x2js.xml_str2json(xmlString);
         var episodes = jsonFeed.rss.channel.item;
 
+        /*
+          Loop through the list of episodes, parse the title for the # and assign it as an id to use in the detail view.
+        */ 
         for (var i = 0; i < episodes.length; i++) {
           var item = episodes[i];
           var title = item.title;

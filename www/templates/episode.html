@@ -1,4 +1,21 @@
 <ion-view view-title="{{episodeId}}">
   <ion-content>
+  	<div class="card padding">
+	  	<h2>{{currentEpisode.title}}</h2>
+	  	<p>{{currentEpisode.pubDate}}</p>
+	  </div>
   </ion-content>
+
+  <ion-footer-bar
+  	
+  	<div class="row">
+  		<div class="col center-text" ng-click="play()">
+				<i class="icon ion-ios-play-outline"></i>
+			</div>
+			<div class="col center-text" ng-click="pause()">
+				<i class="icon ion-ios-pause-outline"></i>
+			</div>
+		</div>
+
+  </ion-footer-bar>
 </ion-view>
