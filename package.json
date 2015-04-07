@@ -17,7 +17,12 @@
   "cordovaPlugins": [
     "org.apache.cordova.device",
     "org.apache.cordova.console",
-    "com.ionic.keyboard"
+    "com.ionic.keyboard",
+    "com.cordova.background-audio",
+    "org.apache.cordova.file",
+    "org.apache.cordova.media",
+    "org.apache.cordova.splashscreen",
+    "org.apache.cordova.statusbar"
   ],
   "cordovaPlatforms": [
     "ios"
