@@ -70,6 +70,7 @@ angular.module('starter.controllers', [])
         });
       }
 
+      // Get stream URL
       $http.get(playlistFile)
         .success(function(data) {
 
