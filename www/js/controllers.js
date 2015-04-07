@@ -45,7 +45,7 @@ angular.module('starter.controllers', [])
 .controller('ListenCtrl', function($scope, $http, AudioService) {
 
     // PLS file from Internet Radio
-    var playlistFile = 'http://www.internet-radio.com/servers/tools/playlistgenerator/?u=http://live.420radio.org:8000/listen.pls?sid=1&t=.pls';
+    var playlistFile = 'http://live.420radio.org:8000/listen.pls';
 
     $scope.init = function() {
 
@@ -54,17 +54,18 @@ angular.module('starter.controllers', [])
 
       // Parse 7.html for the title of the currently playing segment
       function getMeta(url) {
-      $http.get(url)
-        .success(function(data) {
-          var html = data;
-          var body = html.substring(html.indexOf('<body>') + 6, html.lastIndexOf('</body>'));
-          var metaTitle = body.substring(body.lastIndexOf(',') + 1);
 
-          $scope.meta = metaTitle;
-        })
-        .error(function(data) {
-          console.log(data);
-        });
+        $http.get(url)
+          .success(function(data) {
+            var html = data;
+            var body = html.substring(html.indexOf('<body>') + 6, html.lastIndexOf('</body>'));
+            var metaTitle = body.substring(body.lastIndexOf(',') + 1);
+
+            $scope.meta = metaTitle;
+          })
+          .error(function(data) {
+            console.log(data);
+          });
       }
 
       // Get stream URL
@@ -74,13 +75,14 @@ angular.module('starter.controllers', [])
           // Parse the PLS file to get the <IP>:<PORT> for the streaming server
           var dataArray = data.split('\n');
           var url = dataArray[2].split('=')[1];
-          $scope.audioSource = url + '/;type=mp3';
+          $scope.audioSource = url + ';type=mp3';
 
           /*
             - Should be able to append '/status?sid=1' but it return "invalid response"
             - 7.html is deprecated by SHOUTcast but still works, maybe this is an old server?
           */
-          var metaUrl = url + '/7.html';
+
+          var metaUrl = url + '7.html';
 
           // Get meta data and add to scope
           getMeta(metaUrl);
