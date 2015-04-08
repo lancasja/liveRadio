@@ -4,7 +4,34 @@
 	text-align: center;
 }
 
+.button-green {
+	color: #84bd00 !important;
+}
+
 i.icon.ion-ios-play-outline,
 i.icon.ion-ios-pause-outline {
-	font-size: 50px;
+	font-size: 80px;
+}
+
+/* Play/Pause buttons */
+.footer-bar {
+	height: auto;
+	background: #fff;
+	color: #84bd00;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Nav bar */
+.bar-header {
+	background-color: #84bd00 !important;
+}
+
+/* Nav bar text */
+.bar-header .title {
+	color: #fff !important;
+}
+
+/* Nav bar buttons */
+.bar-header button {
+	color: #fff !important;
 }

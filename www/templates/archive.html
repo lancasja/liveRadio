@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="episode in episodes" href="#/app/archive/{{episode._id}}">
-        <h3>{{episode.pubDate}}</h3>
+        <h3>{{episode.pubDate | moment}}</h3>
       </ion-item>
     </ion-list>
   </ion-content>

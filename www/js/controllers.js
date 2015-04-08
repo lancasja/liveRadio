@@ -130,7 +130,9 @@ angular.module('starter.controllers', [])
 /* ================================================ */
 /* == EPISODE (ARCHIVE - SINGLE ITEM) CONTROLLER == */
 /* ================================================ */
-.controller('EpisodeCtrl', function($scope, $stateParams, EpisodesService, AudioService) {
+.controller('EpisodeCtrl', function($scope, $rootScope, $stateParams, EpisodesService, AudioService) {
+
+
 
   $scope.episodeId = $stateParams.episodeId;
 
@@ -138,9 +140,12 @@ angular.module('starter.controllers', [])
     for (var i = 0; i < data.length; i++) {
       if (data[i]._id === $stateParams.episodeId) {
         $scope.currentEpisode = data[i];
+        $scope.pubDate = moment(data[i].pubDate).format('MMMM DD, YYYY');
       }
     }
   });
+
+
 
   $scope.play = function() {
     AudioService.createAudio($scope.currentEpisode.enclosure._url);

@@ -130,6 +130,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   };
 })
 
+/* ============= */
+/* == FILTERS == */
+/* ============= */
+.filter('moment', function() {
+  return function(date) {
+    return moment(date).format('MMMM DD, YYYY');
+  }
+})
+
 /* ============ */
 /* == ROUTES == */
 /* ============ */
