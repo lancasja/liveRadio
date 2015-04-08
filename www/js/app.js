@@ -82,7 +82,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   return {
     
     createAudio: function(src) {
-      
       if (!$rootScope.audio) {
         console.log('$rootScope.audio does NOT exist. Creating one.');
         $rootScope.audio = new Audio(src);
@@ -123,8 +122,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       else if ($rootScope.audio.paused) {
         console.log('No audio is playing. Doing nothing.');
       }
+    },
+
+    isPlaying: function() {
+      return $rootScope.audio ? !$rootScope.audio.paused : false;
     }
-  }
+  };
 })
 
 /* ============ */

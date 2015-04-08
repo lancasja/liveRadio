@@ -1,19 +1,17 @@
 <ion-view view-title="Listen Now" ng-init="init()">
   <ion-content>
-  	<p>{{meta}}</p>
-  </ion-content>
+    <div class="card padding">
+      <h2>{{meta}}</h2>
+    </div>
 
-  <ion-footer-bar>
-  	
-		<div class="row">
-      <div class="col center-text" ng-click="play()">
+    <div class="row">
+      <div class="col center-text" ng-click="play()" ng-hide="isPlaying()">
         <i class="icon ion-ios-play-outline"></i>
       </div>
       
-      <div class="col center-text" ng-click="pause()">
+      <div class="col center-text" ng-click="pause()" ng-show="isPlaying()">
         <i class="icon ion-ios-pause-outline"></i>
       </div>
     </div>
-
-  </ion-footer-bar>
+  </ion-content>
 </ion-view>

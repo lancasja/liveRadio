@@ -109,6 +109,10 @@ angular.module('starter.controllers', [])
     $scope.pause = function() {
       AudioService.pause();
     }
+
+    $scope.isPlaying = function() {
+     return AudioService.isPlaying();
+    }
 })
 
 /* ======================== */
@@ -138,13 +142,6 @@ angular.module('starter.controllers', [])
     }
   });
 
-  /*
-    Like in the "Listen Now" controller/view, play and pause is being handled
-    as two seperate buttons/functions because an if/else that checks for
-    playback state is not working. Not sure if this is an issue with mobile webkit,
-    or if the logic is flawed.
-  */
-
   $scope.play = function() {
     AudioService.createAudio($scope.currentEpisode.enclosure._url);
     AudioService.play();
@@ -153,6 +150,11 @@ angular.module('starter.controllers', [])
   $scope.pause = function() {
     AudioService.pause();
   }
+
+  $scope.isPlaying = function() {
+    return AudioService.isPlaying();
+  }
+
 });
 
 
