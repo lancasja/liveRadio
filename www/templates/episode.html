@@ -3,9 +3,21 @@
   	<div class="card padding">
 	  	<h2>{{currentEpisode.title}}</h2>
 	  	<p>{{pubDate}}</p>
+	  	<p>{{duration}}</p>
 	  </div>
 
+	  <div class="range no-select padding seek-bar">
 
+	  	<!-- <span>{{position | number: 0}}</span> -->
+	  	
+	  	<input
+	  		type="range"
+	  		name="seekBar"
+	  		min="0"
+	  		max="{{duration}}"
+	  		ng-model="position"
+	  	>
+	  </div>
 	</ion-content>
 	
 	<ion-footer-bar class="footer-bar" ng-click="playPause()">

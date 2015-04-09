@@ -35,3 +35,16 @@ i.icon.ion-ios-pause-outline {
 .bar-header button {
 	color: #fff !important;
 }
+
+.seek-bar {
+	position: relative;
+	top: 25vh;
+}
+
+.seek-bar span {
+
+}
+
+.no-select {
+	pointer-events: none !important;
+}

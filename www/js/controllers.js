@@ -108,9 +108,6 @@ angular.module('starter.controllers', [])
 
       else {
 
-        console.log('S: ', $scope.audioSource);
-        console.log('R: ', $rootScope.audio.src);
-
         if ($scope.audioSource === $rootScope.audio.src) {
           AudioService.pause();
           $scope.isPaused = !$scope.isPaused;
@@ -140,7 +137,7 @@ angular.module('starter.controllers', [])
 /* ================================================ */
 /* == EPISODE (ARCHIVE - SINGLE ITEM) CONTROLLER == */
 /* ================================================ */
-.controller('EpisodeCtrl', function($scope, $rootScope, $stateParams, EpisodesService, AudioService) {
+.controller('EpisodeCtrl', function($scope, $rootScope, $interval, $stateParams, EpisodesService, AudioService) {
 
   $scope.episodeId = $stateParams.episodeId;
 
@@ -154,12 +151,17 @@ angular.module('starter.controllers', [])
   });
 
   $scope.isPaused = true;
+  $scope.position = AudioService.getCurrentTime();
 
   $scope.playPause = function() {
     if (!AudioService.isPlaying()) {
       AudioService.createAudio($scope.currentEpisode.enclosure._url);
       AudioService.play();
       $scope.isPaused = !$scope.isPaused;
+
+      $interval(function() {
+        $scope.position = AudioService.getCurrentTime();
+      }, 1000);
     }
 
     else {
@@ -167,15 +169,20 @@ angular.module('starter.controllers', [])
       if ($rootScope.audio.src === $scope.currentEpisode.enclosure._url) {
         AudioService.pause();
         $scope.isPaused = !$scope.isPaused;
+        $interval.cancel();
       }
 
       else {
         AudioService.createAudio($scope.currentEpisode.enclosure._url);
         AudioService.play();
         $scope.isPaused = !$scope.isPaused;
+
+        $interval(function() {
+          $scope.position = AudioService.getCurrentTime();
+        }, 1000);
       }
     }
-  }
+  };
 
 });
 

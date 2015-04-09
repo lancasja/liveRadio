@@ -126,6 +126,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
     isPlaying: function() {
       return $rootScope.audio ? !$rootScope.audio.paused : false;
+    },
+
+    getCurrentTime: function() {
+      return $rootScope.audio ? $rootScope.audio.currentTime : 0;
     }
   };
 })
