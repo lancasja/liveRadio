@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
 /* ==================================== */
 /* == LISTEN NOW (STREAM) CONTROLLER == */
 /* ==================================== */
-.controller('ListenCtrl', function($scope, $http, AudioService) {
+.controller('ListenCtrl', function($scope, $rootScope, $http, AudioService) {
 
     // PLS file from Internet Radio
     var playlistFile = 'http://live.420radio.org:8000/listen.pls';
@@ -97,21 +97,31 @@ angular.module('starter.controllers', [])
         });
     }
 
-    /*
-      $scope.isPlaying is being used in the template with ng-show/ng-hide
-      to toggle weather the Play or Pause button is displayed
-    */
-    $scope.play = function() {
-      AudioService.createAudio($scope.audioSource);
-      AudioService.play();
-    }
+    $scope.isPaused = true;
 
-    $scope.pause = function() {
-      AudioService.pause();
-    }
+    $scope.playPause = function() {
+      if (!AudioService.isPlaying()) {
+        AudioService.createAudio($scope.audioSource);
+        AudioService.play();
+        $scope.isPaused = !$scope.isPaused;
+      }
 
-    $scope.isPlaying = function() {
-     return AudioService.isPlaying();
+      else {
+
+        console.log('S: ', $scope.audioSource);
+        console.log('R: ', $rootScope.audio.src);
+
+        if ($scope.audioSource === $rootScope.audio.src) {
+          AudioService.pause();
+          $scope.isPaused = !$scope.isPaused;
+        }
+
+        else {
+          AudioService.createAudio($scope.audioSource);
+          AudioService.play();
+          $scope.isPaused = !$scope.isPaused;
+        }
+      }
     }
 })
 
@@ -132,8 +142,6 @@ angular.module('starter.controllers', [])
 /* ================================================ */
 .controller('EpisodeCtrl', function($scope, $rootScope, $stateParams, EpisodesService, AudioService) {
 
-
-
   $scope.episodeId = $stateParams.episodeId;
 
   EpisodesService.getEpisodes(function(data) {
@@ -145,19 +153,28 @@ angular.module('starter.controllers', [])
     }
   });
 
+  $scope.isPaused = true;
 
+  $scope.playPause = function() {
+    if (!AudioService.isPlaying()) {
+      AudioService.createAudio($scope.currentEpisode.enclosure._url);
+      AudioService.play();
+      $scope.isPaused = !$scope.isPaused;
+    }
 
-  $scope.play = function() {
-    AudioService.createAudio($scope.currentEpisode.enclosure._url);
-    AudioService.play();
-  };
+    else {
 
-  $scope.pause = function() {
-    AudioService.pause();
-  }
+      if ($rootScope.audio.src === $scope.currentEpisode.enclosure._url) {
+        AudioService.pause();
+        $scope.isPaused = !$scope.isPaused;
+      }
 
-  $scope.isPlaying = function() {
-    return AudioService.isPlaying();
+      else {
+        AudioService.createAudio($scope.currentEpisode.enclosure._url);
+        AudioService.play();
+        $scope.isPaused = !$scope.isPaused;
+      }
+    }
   }
 
 });

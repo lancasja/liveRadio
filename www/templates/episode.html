@@ -4,15 +4,14 @@
 	  	<h2>{{currentEpisode.title}}</h2>
 	  	<p>{{pubDate}}</p>
 	  </div>
+
+
 	</ion-content>
 	
-	<ion-footer-bar class="footer-bar">
+	<ion-footer-bar class="footer-bar" ng-click="playPause()">
 		<div class="row">
-			<div class="col center-text" ng-click="play()" ng-hide="isPlaying()">
-				<i class="icon ion-ios-play-outline"></i>
-			</div>
-			<div class="col center-text" ng-click="pause()" ng-show="isPlaying()">
-				<i class="icon ion-ios-pause-outline"></i>
+			<div class="col center-text">
+				<i class="icon" ng-class="{'ion-ios-play-outline': isPaused, 'ion-ios-pause-outline': !isPaused}"></i>
 			</div>
 		</div>
 	</ion-footer-bar>
