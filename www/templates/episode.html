@@ -5,11 +5,12 @@
 	  	<p>{{pubDate}}</p>
 	  	<p>{{duration}}</p>
 	  </div>
-
-	  <div class="range no-select padding seek-bar">
-
+	</ion-content>
+	
+	<ion-footer-bar class="footer-bar">
+		
+		<div class="range no-select padding seek-bar">
 	  	<!-- <span>{{position | number: 0}}</span> -->
-	  	
 	  	<input
 	  		type="range"
 	  		name="seekBar"
@@ -18,10 +19,8 @@
 	  		ng-model="position"
 	  	>
 	  </div>
-	</ion-content>
-	
-	<ion-footer-bar class="footer-bar" ng-click="playPause()">
-		<div class="row">
+
+		<div class="row" ng-click="playPause()">
 			<div class="col center-text">
 				<i class="icon" ng-class="{'ion-ios-play-outline': isPaused, 'ion-ios-pause-outline': !isPaused}"></i>
 			</div>

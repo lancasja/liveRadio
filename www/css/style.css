@@ -37,8 +37,9 @@ i.icon.ion-ios-pause-outline {
 }
 
 .seek-bar {
-	position: relative;
-	top: 25vh;
+	position: absolute;
+	width: 100%;
+	top: -100%;
 }
 
 .seek-bar span {
