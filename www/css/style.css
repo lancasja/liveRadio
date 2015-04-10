@@ -43,7 +43,10 @@ i.icon.ion-ios-pause-outline {
 }
 
 .seek-bar span {
-
+	display: block;
+	width: 96%;
+	text-align: right;
+	color: rgba(0, 0, 0, 0.4);
 }
 
 .no-select {

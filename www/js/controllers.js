@@ -190,6 +190,10 @@ angular.module('starter.controllers', [])
     }
   };
 
+  $scope.seeked = function() {
+    $rootScope.audio.currentTime = $scope.position;
+  }
+
 });
 
 

@@ -3,22 +3,23 @@
   	<div class="card padding">
 	  	<h2>{{currentEpisode.title}}</h2>
 	  	<p>{{pubDate}}</p>
-	  	<p>{{audioMeta.duration}}</p>
 	  </div>
 	</ion-content>
 	
 	<ion-footer-bar class="footer-bar">
-		
-		<div class="range no-select padding seek-bar">
-	  	<!-- <span>{{position | number: 0}}</span> -->
-	  	<input
-	  		type="range"
-	  		name="seekBar"
-	  		min="0"
-	  		max="{{audioMeta.duration}}"
-	  		ng-model="position"
-	  	>
-	  </div>
+		<div class="seek-bar">
+			<span class="padding-right">{{position | secondsToDateTime | date: 'H:mm:ss'}} / {{audioMeta.duration | secondsToDateTime | date: 'H:mm:ss'}}</span>
+			<div class="range">
+		  	<input
+		  		type="range"
+		  		name="seekBar"
+		  		min="0"
+		  		max="{{audioMeta.duration}}"
+		  		ng-model="position"
+		  		ng-change="seeked()"
+		  	>
+		  </div>
+		 </div>
 
 		<div class="row" ng-click="playPause()">
 			<div class="col center-text">
