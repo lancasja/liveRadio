@@ -51,17 +51,21 @@ angular.module('starter.controllers', [])
 
       // Displays while getting meta data
       $scope.meta = 'Getting title of currently playing...';
+      $scope.audioMeta = { "duration":0 };
 
       // Parse 7.html for the title of the currently playing segment
       function getMeta(url) {
+            console.log("Getting live audio metadata from " + url);
 
         $http.get(url)
           .success(function(data) {
             var html = data;
             var body = html.substring(html.indexOf('<body>') + 6, html.lastIndexOf('</body>'));
             var metaTitle = body.substring(body.lastIndexOf(',') + 1);
-
-            $scope.meta = metaTitle;
+	    var div = document.createElement('div');
+	    div.innerHTML = metaTitle;
+	    $scope.meta  = div.firstChild.nodeValue;
+            // $scope.meta = metaTitle;
           })
           .error(function(data) {
             console.log(data);
@@ -71,6 +75,7 @@ angular.module('starter.controllers', [])
       // Get stream URL
       $http.get(playlistFile)
         .success(function(data) {
+          console.log("Got playlist file " + playlistFile);
 
           // Parse the PLS file to get the <IP>:<PORT> for the streaming server
           var dataArray = data.split('\n');
@@ -101,7 +106,7 @@ angular.module('starter.controllers', [])
 
     $scope.playPause = function() {
       if (!AudioService.isPlaying()) {
-        AudioService.createAudio($scope.audioSource);
+        AudioService.createAudio($scope.audioSource, $scope.audioMeta);
         AudioService.play();
         $scope.isPaused = !$scope.isPaused;
       }
@@ -114,7 +119,7 @@ angular.module('starter.controllers', [])
         }
 
         else {
-          AudioService.createAudio($scope.audioSource);
+          AudioService.createAudio($scope.audioSource, $scope.audioMeta);
           AudioService.play();
           $scope.isPaused = !$scope.isPaused;
         }
@@ -140,6 +145,7 @@ angular.module('starter.controllers', [])
 .controller('EpisodeCtrl', function($scope, $rootScope, $interval, $stateParams, EpisodesService, AudioService) {
 
   $scope.episodeId = $stateParams.episodeId;
+  $scope.audioMeta = { "duration":0 };
 
   EpisodesService.getEpisodes(function(data) {
     for (var i = 0; i < data.length; i++) {
@@ -155,7 +161,7 @@ angular.module('starter.controllers', [])
 
   $scope.playPause = function() {
     if (!AudioService.isPlaying()) {
-      AudioService.createAudio($scope.currentEpisode.enclosure._url);
+      AudioService.createAudio($scope.currentEpisode.enclosure._url, $scope.audioMeta);
       AudioService.play();
       $scope.isPaused = !$scope.isPaused;
 
@@ -173,7 +179,7 @@ angular.module('starter.controllers', [])
       }
 
       else {
-        AudioService.createAudio($scope.currentEpisode.enclosure._url);
+        AudioService.createAudio($scope.currentEpisode.enclosure._url, $scope.audioMeta);
         AudioService.play();
         $scope.isPaused = !$scope.isPaused;
 

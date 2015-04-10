@@ -3,7 +3,7 @@
   	<div class="card padding">
 	  	<h2>{{currentEpisode.title}}</h2>
 	  	<p>{{pubDate}}</p>
-	  	<p>{{duration}}</p>
+	  	<p>{{audioMeta.duration}}</p>
 	  </div>
 	</ion-content>
 	
@@ -15,7 +15,7 @@
 	  		type="range"
 	  		name="seekBar"
 	  		min="0"
-	  		max="{{duration}}"
+	  		max="{{audioMeta.duration}}"
 	  		ng-model="position"
 	  	>
 	  </div>

@@ -81,10 +81,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 .factory('AudioService', function($rootScope) {
   return {
     
-    createAudio: function(src) {
+    createAudio: function(src, audioMeta) {
+      console.log("createAudio called with " + src + " URL and audioMeta.duration " + audioMeta.duration);
       if (!$rootScope.audio) {
         console.log('$rootScope.audio does NOT exist. Creating one.');
         $rootScope.audio = new Audio(src);
+        $rootScope.audio.addEventListener('loadedmetadata', function() {
+                                console.log("New audio INSTANCE: Playing " + $rootScope.audio.src + ", for: " + $rootScope.audio.duration + "seconds.");
+                                audioMeta.duration = $rootScope.audio.duration;
+                                });
       }
 
       else {
@@ -98,6 +103,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
           console.log('Current source and sleected source are different. Setting new source.');
           $rootScope.audio.src = '';
           $rootScope.audio.src = src;
+          $rootScope.audio.addEventListener('loadedmetadata', function() {
+                                console.log("New audio SOURCE: Playing " + $rootScope.audio.src + ", for: " + $rootScope.audio.duration + " seconds.");
+                                audioMeta.duration = $rootScope.audio.duration;
+                                });
         }
       }
     },
@@ -131,6 +140,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     getCurrentTime: function() {
       return $rootScope.audio ? $rootScope.audio.currentTime : 0;
     }
+
   };
 })
 
