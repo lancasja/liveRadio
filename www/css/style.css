@@ -27,23 +27,23 @@ img {
 /* ============= */
 .bar-header {
 	background-color: #84bd00 !important;
-	height: 90px;
+	height: 190px;
 }
 
 /* Title Text */
 .bar-header .title {
 	color: #fff !important;
-	margin-top: 20px;
+	/*margin-top: 10px;*/
 }
 
 /* Bar Buttons */
 .bar-header .button {
 	color: #fff !important;
-	top: -2px;
+	top: -2xpx;
 }
 
 .bar-header .header-item {
-	margin-top: 20px;
+	/*margin-top: 10px;*/
 }
 
 .has-header {
@@ -111,7 +111,26 @@ img {
 	font-size: 80px;
 }
 
+/* ================== */
+/* == SPONSOR VIEW == */
+/* ================== */
 
+/* Container */
+.sponsor-content {
+	padding: 40px 15% 0;
+}
+
+.sponsor-content a {
+	display: block;
+	width: 100%;
+}
+
+.sponsor-content p {
+	font-size: 1.25em;
+	line-height: 1.5em;
+	text-align: center;
+	margin-top: 40px;
+}
 
 
 
