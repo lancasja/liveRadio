@@ -1,47 +1,91 @@
-/* Empty. Add your own CSS if you like */
+/* ========================= */
+/* == UTILITIES / HELPERS == */
+/* ========================= */
 
+/* Disable user interaction */
+.no-select {
+	pointer-events: none !important;
+}
+
+/* Responsive images */
+img {
+	max-width: 100%;
+}
+
+/* Center align text */
 .center-text {
 	text-align: center;
 }
 
+/* Custom button text color */
 .button-green {
 	color: #84bd00 !important;
 }
 
-i.icon.ion-ios-play-outline,
-i.icon.ion-ios-pause-outline {
-	font-size: 80px;
-}
-
-/* Play/Pause buttons */
-.footer-bar {
-	height: auto;
-	background: #fff;
-	color: #84bd00;
-	border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Nav bar */
+/* ============= */
+/* == TOP BAR == */
+/* ============= */
 .bar-header {
 	background-color: #84bd00 !important;
+	height: 90px;
 }
 
-/* Nav bar text */
+/* Title Text */
 .bar-header .title {
 	color: #fff !important;
+	margin-top: 20px;
 }
 
-/* Nav bar buttons */
-.bar-header button {
+/* Bar Buttons */
+.bar-header .button {
 	color: #fff !important;
+	top: -2px;
 }
 
+.bar-header .header-item {
+	margin-top: 20px;
+}
+
+.has-header {
+	top: 90px;
+}
+
+/* =============== */
+/* == SIDE MENU == */
+/* =============== */
+
+.menu-item {
+	border: none;
+}
+
+.menu-item h3,
+.menu-item p {
+	font-size: 1em;
+	font-weight: normal;
+	color: #70707A;
+}
+
+.menu-item h3 {
+	padding: 24px 0 20px;
+}
+
+.menu-item img {
+	width: 70%;
+	margin-bottom: 16px;
+}
+
+/* ============== */
+/* == SEEK BAR == */
+/* ============== */
+
+/* Container */
 .seek-bar {
 	position: absolute;
 	width: 100%;
 	top: -100%;
 }
 
+/* Time */
 .seek-bar span {
 	display: block;
 	width: 96%;
@@ -49,6 +93,52 @@ i.icon.ion-ios-pause-outline {
 	color: rgba(0, 0, 0, 0.4);
 }
 
-.no-select {
-	pointer-events: none !important;
+/* ================== */
+/* == PLAY / PAUSE == */
+/* ================== */
+
+/* Container */
+.footer-bar {
+	height: auto;
+	background: #fff;
+	color: #84bd00;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+/* Buttons */
+.footer-bar i.icon.ion-ios-play-outline,
+.footer-bar i.icon.ion-ios-pause-outline {
+	font-size: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
