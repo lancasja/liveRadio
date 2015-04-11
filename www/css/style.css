@@ -27,23 +27,23 @@ img {
 /* ============= */
 .bar-header {
 	background-color: #84bd00 !important;
-	height: 190px;
+	height: 90px;
 }
 
 /* Title Text */
 .bar-header .title {
 	color: #fff !important;
-	/*margin-top: 10px;*/
+	margin-top: 20px;
 }
 
 /* Bar Buttons */
 .bar-header .button {
 	color: #fff !important;
-	top: -2xpx;
+	top: -2px;
 }
 
 .bar-header .header-item {
-	/*margin-top: 10px;*/
+	margin-top: 20px;
 }
 
 .has-header {

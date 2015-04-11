@@ -28,7 +28,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     // Controll duration of the splash screen in milliseconds
     setTimeout(function() {
       $cordovaSplashscreen.hide();
-    }, 60);
+    }, 5000);
 
   });
 })
