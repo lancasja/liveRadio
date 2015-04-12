@@ -136,9 +136,23 @@ img {
 
 
 
+.primary-buttons {
+	position: relative;
+	top: 100px;
+	box-shadow: none;
+}
 
+.primary-buttons .row {
+	margin: 40px 0;
+}
 
+.primary-buttons .button {
+	font-size: 40px;
+}
 
+.primary-buttons .button::before {
+	font-size: 90px;
+}
 
 
 
