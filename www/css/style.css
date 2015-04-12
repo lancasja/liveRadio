@@ -27,27 +27,31 @@ img {
 /* ============= */
 .bar-header {
 	background-color: #84bd00 !important;
-	height: 90px;
+	height: 90px !important;
 }
 
 /* Title Text */
 .bar-header .title {
 	color: #fff !important;
-	margin-top: 20px;
+	margin-top: 24px !important;
+	overflow: visible !important;
 }
 
 /* Bar Buttons */
 .bar-header .button {
 	color: #fff !important;
-	top: -2px;
 }
 
 .bar-header .header-item {
 	margin-top: 20px;
 }
 
+.header-item.title {
+	font-size: 1.5em;
+}
+
 .has-header {
-	top: 90px;
+	top: 90px !important;
 }
 
 /* =============== */
@@ -138,7 +142,7 @@ img {
 
 .primary-buttons {
 	position: relative;
-	top: 100px;
+	top: 80px;
 	box-shadow: none;
 }
 
