@@ -35,15 +35,19 @@ img {
 	color: #fff !important;
 	margin-top: 24px !important;
 	overflow: visible !important;
+
+	/* Center title text on android */
+	text-align: center !important;
 }
 
 /* Bar Buttons */
 .bar-header .button {
 	color: #fff !important;
+	top: 20px;
 }
 
 .bar-header .header-item {
-	margin-top: 20px;
+	
 }
 
 .header-item.title {

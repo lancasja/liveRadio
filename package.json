@@ -23,7 +23,8 @@
     "org.apache.cordova.media",
     "org.apache.cordova.splashscreen",
     "org.apache.cordova.statusbar",
-    "org.apache.cordova.inappbrowser"
+    "org.apache.cordova.inappbrowser",
+    "com.danielcwilson.plugins.googleanalytics"
   ],
   "cordovaPlatforms": [
     "ios"

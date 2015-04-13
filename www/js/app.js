@@ -30,6 +30,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       $cordovaSplashscreen.hide();
     }, 5000);
 
+    // Google Analytics
+    // https://blog.nraboy.com/2014/06/using-google-analytics-ionicframework/
+    if (typeof analytics !== 'undefined') {
+      analytics.startTrackerWithId('UA-61555293-1');
+    } else {
+      console.log('Google Analytics not started.');
+    }
+
   });
 })
 
@@ -153,6 +161,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   }
 })
 
+// http://stackoverflow.com/a/28401099
 .filter('secondsToDateTime', function() {
   return function(seconds) {
     return new Date(1970, 0, 1).setSeconds(seconds);
@@ -162,7 +171,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 /* ============ */
 /* == ROUTES == */
 /* ============ */
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+  $ionicConfigProvider.backButton.text('');
+
+  if (ionic.Platform.isIOS()) {
+    $ionicConfigProvider.backButton.previousTitleText('');
+  }
 
   $stateProvider
 

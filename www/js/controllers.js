@@ -5,21 +5,43 @@ angular.module('starter.controllers', [])
 /* ========================== */
 .controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout) {
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  // http://forum.ionicframework.com/t/multiple-modals/11187/2
+  
+  // Create sponsor modal
+  $ionicModal.fromTemplateUrl('templates/sponsor.html', {
+    id: 1,
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.sponsorModal = modal;
+  });
+
+  $ionicModal.fromTemplateUrl('templates/legal-modal.html', {
+    id: 2,
+    scope: $scope
+  }).then(function(modal) {
+    $scope.legalModal = modal;
   });
 
   // Triggered in the sponsor modal to close it
-  $scope.closeSponsor = function() {
-    $scope.modal.hide();
+  $scope.close = function(index) {
+    if (index == 1) {
+      $scope.sponsorModal.hide();
+    }
+
+    else if (index == 2) {
+      $scope.legalModal.hide(); 
+    }
   };
 
   // Open the sponsor modal
-  $scope.sponsorModal = function() {
-    $scope.modal.show();
+  $scope.modal = function(index) {
+    if (index == 1) {
+      $scope.sponsorModal.show();
+    }
+
+    else if (index == 2) {
+      $scope.legalModal.show(); 
+    }
   };
 })
 
@@ -27,29 +49,32 @@ angular.module('starter.controllers', [])
 /* == LISTEN NOW (STREAM) CONTROLLER == */
 /* ==================================== */
 .controller('ListenCtrl', function($scope, $rootScope, $http, AudioService) {
+    // Track this controller
+    if (typeof analytics !== 'undefined') {
+      analytics.trackView('Listen Now Controller');
+    }
 
-    // PLS file from Internet Radio
     var playlistFile = 'http://live.420radio.org:8000/listen.pls';
 
     $scope.init = function() {
 
       // Displays while getting meta data
       $scope.meta = 'Getting title of currently playing...';
-      $scope.audioMeta = { "duration":0 };
+      $scope.audioMeta = { "duration":  0 };
 
       // Parse 7.html for the title of the currently playing segment
       function getMeta(url) {
-            console.log("Getting live audio metadata from " + url);
+        
+        console.log("Getting live audio metadata from " + url);
 
         $http.get(url)
           .success(function(data) {
             var html = data;
             var body = html.substring(html.indexOf('<body>') + 6, html.lastIndexOf('</body>'));
             var metaTitle = body.substring(body.lastIndexOf(',') + 1);
-	    var div = document.createElement('div');
-	    div.innerHTML = metaTitle;
-	    $scope.meta  = div.firstChild.nodeValue;
-            // $scope.meta = metaTitle;
+            var div = document.createElement('div');
+            div.innerHTML = metaTitle;
+            $scope.meta  = div.firstChild.nodeValue;
           })
           .error(function(data) {
             console.log(data);
@@ -116,6 +141,11 @@ angular.module('starter.controllers', [])
 /* ======================== */
 .controller('ArchiveCtrl', function($scope, EpisodesService) {
 
+  // Track this controller
+  if (typeof analytics !== 'undefined') {
+    analytics.trackView('Archive Controller');
+  }
+
   // List of episodes coming from EpisodesService defined in js/app.js
   EpisodesService.getEpisodes(function(data) {
     $scope.episodes = data;
@@ -127,6 +157,11 @@ angular.module('starter.controllers', [])
 /* == EPISODE (ARCHIVE - SINGLE ITEM) CONTROLLER == */
 /* ================================================ */
 .controller('EpisodeCtrl', function($scope, $rootScope, $interval, $stateParams, EpisodesService, AudioService) {
+
+  // Track this controller
+  if (typeof analytics !== 'undefined') {
+    analytics.trackView('Archive Controller');
+  }
 
   $scope.episodeId = $stateParams.episodeId;
   $scope.audioMeta = { "duration":0 };
