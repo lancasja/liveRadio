@@ -146,20 +146,24 @@ img {
 
 .primary-buttons {
 	position: relative;
-	top: 80px;
+	top: 0px;
 	box-shadow: none;
+	padding: 0 40px;
 }
 
 .primary-buttons .row {
-	margin: 40px 0;
+	margin: 120px 0;
 }
 
-.primary-buttons .button {
+.primary-buttons .text {
 	font-size: 40px;
+	text-align: left;
+	padding-left: 50px;
+	font-weight: 500;
 }
 
-.primary-buttons .button::before {
-	font-size: 90px;
+.primary-buttons .img-icon img {
+	max-width: 150%;
 }
 
 
