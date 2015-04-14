@@ -167,6 +167,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   $ionicConfigProvider.backButton.text('');
+  $ionicConfigProvider.views.forwardCache(true);
 
   if (ionic.Platform.isIOS()) {
     $ionicConfigProvider.backButton.previousTitleText('');
