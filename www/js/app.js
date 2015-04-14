@@ -17,13 +17,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
     
-    // if (window.StatusBar) {
-    //   org.apache.cordova.statusbar required
-    //   StatusBar.styleDefault();
-    // }
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      StatusBar.styleDefault();
+    }
 
     // This works in the iOS simulator but not on a device
-    $cordovaStatusbar.hide();
+    // $cordovaStatusbar.hide();
 
     // Controll duration of the splash screen in milliseconds
     setTimeout(function() {
