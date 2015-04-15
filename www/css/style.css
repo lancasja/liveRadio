@@ -1,3 +1,8 @@
+img[src*="burger-menu"] {
+	width: 30px;
+	top: 8px;
+}
+
 .buttons {
 	margin-top: 0 !important;
 }
@@ -46,19 +51,12 @@ img {
 	color: #fff !important;
 	margin-top: 24px !important;
 	overflow: visible !important;
-
-	/* Center title text on android */
-	text-align: center !important;
 }
 
 /* Bar Buttons */
 .bar-header .button {
 	color: #fff !important;
 	top: 20px;
-}
-
-.bar-header .header-item {
-	
 }
 
 .header-item.title {
@@ -121,20 +119,15 @@ img {
 	height: auto;
 	background: #fff;
 	color: #84bd00;
-	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-top: 1px solid #84BD00;
 }
 
 /* Buttons */
-.footer-bar i.icon.ion-ios-play-outline,
-.footer-bar i.icon.ion-ios-pause-outline {
-	font-size: 80px;
-}
-
 .footer-bar i.play-icon,
 .footer-bar i.pause-icon {
 	display: block;
-	width: 90px;
-	height: 90px;
+	width: 60px;
+	height: 60px;
 	margin: 0 auto;
 }
 
@@ -171,13 +164,14 @@ img {
 
 
 
-
-
+/* ==================== */
+/* == PRIMARY SCREEN == */
+/* ==================== */
 .primary-buttons {
 	position: relative;
-	top: 0px;
 	box-shadow: none;
 	padding: 0 40px;
+	top: 0px;
 }
 
 .primary-buttons .row {
@@ -185,16 +179,25 @@ img {
 }
 
 .primary-buttons .text {
-	font-size: 40px;
+	font-size: 32px;
 	text-align: left;
 	padding-left: 50px;
 	font-weight: 500;
 }
 
 .primary-buttons .img-icon img {
-	max-width: 150%;
+	max-width: 130%;
 }
 
+/* iPhone 4s */
+@media screen and (max-width: 370px) {
+	.primary-buttons .row {
+		margin: 90px 0;
+	}
+	.primary-buttons {
+		top: -30px;
+	}
+}
 
 
 

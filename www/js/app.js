@@ -168,6 +168,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
   $ionicConfigProvider.backButton.text('');
   $ionicConfigProvider.views.forwardCache(true);
+  $ionicConfigProvider.navBar.alignTitle('center');
 
   if (ionic.Platform.isIOS()) {
     $ionicConfigProvider.backButton.previousTitleText('');

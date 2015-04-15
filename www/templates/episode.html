@@ -1,7 +1,7 @@
 <ion-view view-title="Episode #{{episodeId}}">
   <ion-content>
   	<div class="card padding">
-	  	<h2>{{currentEpisode.title}}</h2>
+	  	<h3>{{currentEpisode.title}}</h3>
 	  	<p>{{pubDate}}</p>
 	  </div>
 	</ion-content>
@@ -23,7 +23,7 @@
 
 		<div class="row" ng-click="playPause()">
 			<div class="col center-text">
-				<i class="icon" ng-class="{'ion-ios-play-outline': isPaused, 'ion-ios-pause-outline': !isPaused}"></i>
+				<i class="icon" ng-class="{'play-icon': isPaused, 'pause-icon': !isPaused}"></i>
 			</div>
 		</div>
 	</ion-footer-bar>
