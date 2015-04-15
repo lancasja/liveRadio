@@ -141,25 +141,37 @@ img {
 	background-size: contain;
 }
 
-/* ================== */
-/* == SPONSOR VIEW == */
-/* ================== */
+/* ================================ */
+/* == SPONSOR & ATTRIBUTION VIEW == */
+/* ================================ */
 
 /* Container */
 .sponsor-content {
 	padding: 40px 15% 0;
 }
 
+.attrib-content {
+	padding: 40px 10% 0;
+} 
+
 .sponsor-content a {
 	display: block;
 	width: 100%;
 }
 
-.sponsor-content p {
+.sponsor-content p,
+.attrib-content p {
 	font-size: 1.25em;
 	line-height: 1.5em;
-	text-align: center;
 	margin-top: 20px;
+}
+
+.sponsor-content p {
+	text-align: center;
+}
+
+.attrib-content p {
+	text-align: left;
 }
 
 

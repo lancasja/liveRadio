@@ -22,6 +22,13 @@ angular.module('starter.controllers', [])
     $scope.legalModal = modal;
   });
 
+  $ionicModal.fromTemplateUrl('templates/attrib-modal.html', {
+    id: 3,
+    scope: $scope
+  }).then(function(modal) {
+    $scope.attribModal = modal;
+  });
+
   // Triggered in the sponsor modal to close it
   $scope.close = function(index) {
     if (index == 1) {
@@ -30,6 +37,10 @@ angular.module('starter.controllers', [])
 
     else if (index == 2) {
       $scope.legalModal.hide(); 
+    }
+
+    else if (index == 3) {
+      $scope.attribModal.hide(); 
     }
   };
 
@@ -41,6 +52,10 @@ angular.module('starter.controllers', [])
 
     else if (index == 2) {
       $scope.legalModal.show(); 
+    }
+
+    else if (index == 3) {
+      $scope.attribModal.show(); 
     }
   };
 })
